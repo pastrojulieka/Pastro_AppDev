@@ -7,6 +7,7 @@ module.exports = {
         brand: '#52622E',
         'brand-dark': '#3A4520',
         terracotta: '#E07A5F',
+        mocha: '#C4A484',
         success: '#10B981',
         danger: '#EF4444',
         warning: '#F59E0B',
