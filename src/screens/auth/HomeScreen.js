@@ -1,31 +1,21 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { IMG, ROUTES } from '../utils';
+import { IMG, ROUTES } from '../../utils';
 
 import { useDispatch } from 'react-redux';
-import { resetLogin } from '../app/reducers/auth';
+import { resetLogin } from '../../app/reducers/auth';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
+    <View className="flex-1 justify-center items-center">
       <Image
         source={{
           uri: IMG.LOGO,
-          // uri: 'https://www.chachinggroup.com/blog/wp-content/uploads/2016/07/logo-design-in-Thailand.jpg',
         }}
-        style={{
-          width: 200,
-          height: 200,
-        }}
+        className="w-50 h-50"
       />
       <Text>HomeScreen</Text>
 

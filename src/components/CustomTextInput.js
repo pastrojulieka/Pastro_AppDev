@@ -1,29 +1,21 @@
-import { Dimensions, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 const CustomTextInput = ({
   placeholder,
   label,
-  labelStyle,
+  labelClassName,
   value,
-  containerStyle,
-  textStyle,
+  containerClassName,
+  textClassName,
 }) => {
-  const { width, height } = Dimensions.get('window');
-
   return (
-    <View style={containerStyle}>
-      <Text style={labelStyle}>{label}</Text>
+    <View className={containerClassName}>
+      <Text className={labelClassName}>{label}</Text>
       <TextInput
         placeholder={placeholder}
         onChangeText={value}
-        style={[
-          textStyle,
-          {
-            width: width * 0.9,
-            borderBottomWidth: 1,
-          },
-        ]}
+        className={`w-full border-b ${textClassName}`}
       />
     </View>
   );

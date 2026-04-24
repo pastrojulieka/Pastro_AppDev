@@ -1,25 +1,14 @@
 import { Image, Text, View } from 'react-native';
-import { IMG } from '../utils';
+import { IMG } from '../../utils';
 
 const ProfileScreen = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: 'blue',
-        borderWidth: 3,
-      }}
-    >
+    <View className="flex-1 justify-center items-center border-4 border-blue-500">
       <Image
         source={{
           uri: IMG.LOGO,
         }}
-        style={{
-          width: 200,
-          height: 200,
-        }}
+        className="w-50 h-50"
       />
       <Text>ProfileScreen</Text>
     </View>
