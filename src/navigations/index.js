@@ -1,30 +1,40 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { useEffect } from 'react';
+import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Platform, StatusBar, useColorScheme } from 'react-native';
-
-import AuthNav from './AuthNav';
-import MainNav from './MainNav';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
+import AuthNavigator from './AuthNav';
+import MainNavigator from './MainNav';
+
+const Stack = createStackNavigator();
+
 export default () => {
+
   const isDarkMode = useColorScheme() === 'dark';
-  const { data } = useSelector(state => state.auth);
+  const theme = isDarkMode ? DarkTheme : DefaultTheme;
 
   useEffect(() => {
-    if (Platform.OS === 'android') {
-      StatusBar.setBackgroundColor('#000000', true);
+    if (Platform.OS === 'android'){
+      StatusBar.setBackgroundColor(isDarkMode ? '#000000' : '#ffffff');
     }
 
-    StatusBar.setBarStyle('dark-content', true);
+    StatusBar.setBarStyle(isDarkMode ? 'light-content' : 'dark-content');
   }, [isDarkMode]);
 
-  console.log('TEST: ', JSON.stringify(data, null, 2));
-
-  let isLoggedIn = !!data;
+  const { data } = useSelector(state => state.authentication || {data: null, isLoading: false});
 
   return (
-    <NavigationContainer>
-      {isLoggedIn ? <MainNav /> : <AuthNav />}
+    <NavigationContainer theme={theme}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {data === null ? (
+          // User is not logged in
+          <Stack.Screen name="Auth" component={AuthNavigator} />
+        ) : (
+          // User is logged in - MainNavigation contains the Bottom Tabs
+          <Stack.Screen name="App" component={MainNavigator} />
+        )}
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

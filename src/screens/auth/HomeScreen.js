@@ -4,35 +4,34 @@ import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { IMG, ROUTES } from '../../utils';
 
 import { useDispatch } from 'react-redux';
-import { resetLogin } from '../../app/reducers/auth';
+import { userLoginReset as resetLogin } from '../../app/sagas/actions';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   return (
-    <View className="flex-1 justify-center items-center">
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
       <Image
         source={{
           uri: IMG.LOGO,
         }}
-        className="w-50 h-50"
+        style={{
+          width: 200,
+          height: 200,
+        }}
       />
       <Text>HomeScreen</Text>
-
-      <TouchableOpacity
-        onPress={() => {
-          dispatch(resetLogin());
-        }}
-      >
-        <View
-          style={{
-            padding: 20,
-            backgroundColor: 'green',
-            borderRadius: 20,
-          }}
-        >
-          <Text style={{ fontSize: 40, color: 'white' }}>LOGOUT</Text>
-        </View>
+      <TouchableOpacity onPress={() => navigation.navigate(ROUTES.PROFILE)}>
+        <Text>Go to Profile</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => dispatch(resetLogin())}>
+        <Text>Logout</Text>
       </TouchableOpacity>
     </View>
   );
