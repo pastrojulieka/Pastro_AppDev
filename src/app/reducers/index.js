@@ -18,7 +18,7 @@ const rootPersistConfig = {
 const authPersistConfig = {
   key: 'authentication',
   storage: AsyncStorage,
-  blacklist: [],
+  whitelist: ['data'], // Only persist user data, not loading/error states
 };
 
 // Combine Reducers

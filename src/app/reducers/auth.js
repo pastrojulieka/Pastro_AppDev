@@ -3,9 +3,12 @@ import {
   USER_LOGIN_ERROR,
   USER_LOGIN_REQUEST,
   USER_LOGIN_RESET,
+  USER_LOGIN,
   USER_REGISTER_COMPLETED,
   USER_REGISTER_ERROR,
   USER_REGISTER_REQUEST,
+  USER_REGISTER,
+  USER_LOGOUT,
 } from '../sagas/actions';
 
 const INITIAL_STATE = {
@@ -40,6 +43,9 @@ export default function reducer(state = INITIAL_STATE, action) {
       };
 
     case USER_LOGIN_RESET:
+      return INITIAL_STATE;
+
+    case USER_LOGOUT:
       return INITIAL_STATE;
 
     case USER_REGISTER_REQUEST:

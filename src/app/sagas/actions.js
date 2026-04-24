@@ -64,6 +64,13 @@ export const userLoginReset = () => ({
     type: USER_LOGIN_RESET,
 });
 
+// USER LOGOUT
+export const USER_LOGOUT = 'USER_LOGOUT';
+
+export const userLogout = () => ({
+    type: USER_LOGOUT,
+});
+
 export const getPexelsImages = (payload) => ({
     type: GET_PEXELS_IMAGES,
     payload,
