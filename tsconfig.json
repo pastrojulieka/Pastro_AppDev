@@ -1,11 +1,14 @@
 {
   "extends": "@react-native/typescript-config",
   "compilerOptions": {
+    "allowJs": true,         // Allows you to mix .js and .ts files during the move
+    "checkJs": false,        // Don't report errors in your old JS files yet
     "types": [
       "jest"
     ]
   },
   "include": [
+    "src/**/*",              // Make sure your src folder is explicitly included
     "**/*.ts",
     "**/*.tsx",
     "nativewind-env.d.ts"
